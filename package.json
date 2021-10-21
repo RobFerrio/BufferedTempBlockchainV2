@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "bull": "^3.29.3",
+    "dockerpi-sensorhub": "^1.0.3",
+    "dotenv": "^10.0.0",
+    "fs-extra": "^10.0.0",
+    "web3": "^1.6.0"
+  }
+}
