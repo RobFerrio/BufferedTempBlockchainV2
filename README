@@ -9,10 +9,20 @@
 3 - Deploy del contratto
     Usare lo script di deploy con node deploy.js (è necessario installare i node_modules prima => npm install)
 
-4 - Lanciare measure
-    node measure.js
+NB - I seguenti script usano la libreria Bull, che richiede un server Redis su localhost:6379 (default)
+    Una piccola guida per l'installazione e l'avvio su Raspberry è presente al seguente indirizzo:
+    https://amalgjose.com/2020/08/11/how-to-install-redis-in-raspberry-pi/
 
-NB - Il file .env contiene le variabili d'ambiente usati dagli scripts:
+4 - Lanciare le misure e inviarle alla Blockchain
+    node measure.js
+    
+(5) Osservare le transazioni
+    node observe.js
+    
+(6) Recuperare le misure
+    node get.js
+
+NB - Il file .env contiene le variabili d'ambiente usati dagli script:
     WEB3_PROVIDER_URI           => Indirizzo JSON-RPC
     SIGNER_LOCAL_PRIVATE_KEY    => Chiave privata account eth
     SIGNER_LOCAL_ADDRESS        => Indirizzo account eth
