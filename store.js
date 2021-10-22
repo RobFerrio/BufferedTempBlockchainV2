@@ -13,9 +13,8 @@ const contract = new web3.eth.Contract(abi, contractAddr);
 
 module.exports = async function (job) {
     let encodedABI = contract.methods.storeMeasurement(job.data.temp, job.data.time).encodeABI();
-    let nonce = web3.utils.numberToHex(await web3.eth.getTransactionCount(accAddr));
     let txData = {
-        nonce: ""+nonce,
+        nonce: ""+job.data.nonce,
         data: ""+encodedABI,
         from: ""+accAddr,
         to: ""+contract.options.address,
@@ -24,7 +23,5 @@ module.exports = async function (job) {
     };
 
     let tx = await web3.eth.accounts.signTransaction(txData, privateKey);
-    let result = await web3.eth.sendSignedTransaction(tx.rawTransaction);
-
-    return Promise.resolve(result);
+    return web3.eth.sendSignedTransaction(tx.rawTransaction);
 }
